@@ -8,7 +8,6 @@ body {
 .all {
     background-color: #D3990B;
     border-radius: 30px;
-
     border-left: 4px solid red;
     border-right: 4px solid red;
     border-top: 4px solid red;
@@ -25,6 +24,7 @@ body {
     border-right: 2px solid red;
     margin-right: 1px;
     margin-bottom: 20px; /* Ajout de la marge en bas */
+    background-color: #735200;
 }
 
 
@@ -110,6 +110,28 @@ body {
 .rectangle.sharp.highlighted {
     background-color: #d32f2f;
 }
+
+
+.note{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.lettre {
+    font-size: 20px;
+    
+}
+
+.corde {
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+
+
+
+
 
 @media (max-width: 600px) {
     .piano {
