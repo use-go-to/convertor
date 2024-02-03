@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Multi-Piano</title>
+</head>
+<body>
+    <div class="all">
+        
+        <br>
+        <div class="piano" id="piano1">
+            <div class="rectangle" id="C1">C</div>
+            <div class="rectangle sharp" id="C#1">C#</div>
+            <div class="rectangle" id="D1">D</div>
+            <div class="rectangle sharp" id="D#1">D#</div>
+            <div class="rectangle" id="E1">E</div>
+            <div class="rectangle" id="F1">F</div>
+            <div class="rectangle sharp" id="F#1">F#</div>
+            <div class="rectangle" id="G1">G</div>
+            <div class="rectangle sharp" id="G#1">G#</div>
+            <div class="rectangle" id="A1">A</div>
+            <div class="rectangle sharp" id="A#1">A#</div>
+            <div class="rectangle" id="B1">B</div>
+        </div>
+
+        <div class="piano" id="piano2">
+            <div class="rectangle" id="C2">C</div>
+            <div class="rectangle sharp" id="C#2">C#</div>
+            <div class="rectangle" id="D2">D</div>
+            <div class="rectangle sharp" id="D#2">D#</div>
+            <div class="rectangle" id="E2">E</div>
+            <div class="rectangle" id="F2">F</div>
+            <div class="rectangle sharp" id="F#2">F#</div>
+            <div class="rectangle" id="G2">G</div>
+            <div class="rectangle sharp" id="G#2">G#</div>
+            <div class="rectangle" id="A2">A</div>
+            <div class="rectangle sharp" id="A#2">A#</div>
+            <div class="rectangle" id="B2">B</div>
+        </div>
+
+        <div class="piano" id="piano3">
+            <div class="rectangle" id="C3">C</div>
+            <div class="rectangle sharp" id="C#3">C#</div>
+            <div class="rectangle" id="D3">D</div>
+            <div class="rectangle sharp" id="D#3">D#</div>
+            <div class="rectangle" id="E3">E</div>
+            <div class="rectangle" id="F3">F</div>
+            <div class="rectangle sharp" id="F#3">F#</div>
+            <div class="rectangle" id="G3">G</div>
+            <div class="rectangle sharp" id="G#3">G#</div>
+            <div class="rectangle" id="A3">A</div>
+            <div class="rectangle sharp" id="A#3">A#</div>
+            <div class="rectangle" id="B3">B</div>
+        </div>
+
+        <div class="piano" id="piano4">
+            <div class="rectangle" id="C4">C</div>
+            <div class="rectangle sharp" id="C#4">C#</div>
+            <div class="rectangle" id="D4">D</div>
+            <div class="rectangle sharp" id="D#4">D#</div>
+            <div class="rectangle" id="E4">E</div>
+            <div class="rectangle" id="F4">F</div>
+            <div class="rectangle sharp" id="F#4">F#</div>
+            <div class="rectangle" id="G4">G</div>
+            <div class="rectangle sharp" id="G#4">G#</div>
+            <div class="rectangle" id="A4">A</div>
+            <div class="rectangle sharp" id="A#4">A#</div>
+            <div class="rectangle" id="B4">B</div>
+        </div>
+        <br>
+        <br>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <input type="text" id="rectangleName" placeholder="Entrez les notes de la guitare">
+        <br>
+        <br>
+        <button onclick="highlightRectanglesFromInput()">Éclairer</button>
+        <button onclick="undoLastHighlight()">Retour en arrière</button>
+        <button onclick="turnOffAllRectangles()">Éteindre tout</button>
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

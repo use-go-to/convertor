@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #1EBBFF;
+}
+
+.all {
+    background-color: #D3990B;
+    border-radius: 30px;
+
+    border-left: 4px solid red;
+    border-right: 4px solid red;
+    border-top: 4px solid red;
+    border-bottom: 4px solid red;
+}
+
+
+
+
+
+.piano {
+    display: inline-block;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    margin-right: 1px;
+    margin-bottom: 20px; /* Ajout de la marge en bas */
+}
+
+
+
+
+
+
+
+#rectangleName {
+    width: 170px;
+    height: 20px;
+    border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+.rectangle {
+    display: inline-block;
+    width: 30px;
+    height: 150px;
+    margin: 0; /* Aucune marge entre les touches blanches */
+    background-color: #eee;
+    color: #333;
+    font-size: 12px;
+    line-height: 100px;
+    cursor: pointer;
+    border-right: 1px solid transparent;
+    position: relative; /* Position relative pour référence z-index */
+}
+
+.rectangle.sharp {
+    display: inline-block;
+    width: 20px;
+    height: 100px;
+    margin-top: -60px;
+    background-color: #333;
+    color: #fff;
+    z-index: 1; /* Toujours au-dessus des touches blanches */
+    position: relative; /* Position relative pour référence z-index */
+    margin-left: -13px; /* Ajustement pour chevaucher les touches blanches */
+    margin-right: -13px; /* Ajustement pour chevaucher les touches blanches */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.rectangle.sharp.last {
+    border-right: none;
+}
+
+.rectangle.last {
+    border-right: none;
+}
+
+.highlighted {
+    background-color: #4285f4;
+    color: #fff;
+}
+
+.rectangle.sharp.highlighted {
+    background-color: #d32f2f;
+}
+
+@media (max-width: 600px) {
+    .piano {
+        clear: left; /* Ajout de la propriété clear pour sauter une ligne */
+    }
+}
