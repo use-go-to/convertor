@@ -27,23 +27,136 @@ function toggleHighlightRectangle(rectangleId) {
 
 function highlightRectanglesFromInput() {
     var rectangleNameInput = document.getElementById('rectangleName');
-    var rectangleNames = rectangleNameInput.value.toUpperCase().split('/');
+    var inputText = rectangleNameInput.value.toUpperCase();
 
-    for (var i = 0; i < rectangleNames.length; i++) {
-        var currentRectangleName = rectangleNames[i].trim();
+    // Utiliser une expression régulière pour trouver tous les accords dans le texte d'entrée
+    var chordMatches = inputText.match(/\(.*?\)/g);
 
-        if (isValidRectangleName(currentRectangleName)) {
-            const correspondingRectangleId = getCorrespondingRectangleId(currentRectangleName);
-            toggleHighlightRectangle(correspondingRectangleId);
-        } else {
-            alert("Note de guitare invalide. Utilisez des noms comme e1, b3, a2, m3, etc.");
-            return; // Arrêtez la fonction si un nom de rectangle est invalide
+    if (chordMatches) {
+        for (var i = 0; i < chordMatches.length; i++) {
+            var currentChord = chordMatches[i].replace(/[()]/g, '').trim();
+
+            if (isValidChordSyntax(currentChord)) {
+                // Éclairer les touches correspondantes à l'accord
+                highlightNotesInChord(currentChord);
+            } else {
+                alert("Syntaxe d'accord invalide. Utilisez des accords comme (e4), (a6), etc.");
+                return; // Arrêtez la fonction si la syntaxe de l'accord est invalide
+            }
+        }
+    } else {
+        // Aucun accord trouvé dans la recherche, éclairer les touches individuelles
+        var rectangleNames = inputText.split('/');
+
+        for (var i = 0; i < rectangleNames.length; i++) {
+            var currentRectangleName = rectangleNames[i].trim();
+
+            if (isValidRectangleName(currentRectangleName)) {
+                const correspondingRectangleId = getCorrespondingRectangleId(currentRectangleName);
+                toggleHighlightRectangle(correspondingRectangleId);
+            } else {
+                alert("Note de guitare invalide. Utilisez des noms comme e1, b3, a2, m3, etc.");
+                return; // Arrêtez la fonction si un nom de rectangle est invalide
+            }
         }
     }
 
     // Réinitialiser la valeur de l'input après avoir éclairé les notes
     rectangleNameInput.value = '';
 }
+
+function isValidChordSyntax(chord) {
+    const regex = /^[EADGBM][0-9]+$/;
+    return regex.test(chord);
+}
+
+
+
+
+
+function highlightNotesInChord(chord) {
+    const validStrings = Object.keys(guitarStrings);
+
+    // Vérifier si la lettre entre les parenthèses est 'e' ou 'a'
+    let isEChord = /^e[0-9]+$/i.test(chord);
+    let isAChord = /^a[0-9]+$/i.test(chord);
+
+    if (!isEChord && !isAChord) {
+        alert("Seuls les accords avec la lettre 'e' ou 'a' sont pris en charge. Utilisez des accords comme (e4), (a6), etc.");
+        return;
+    }
+
+    const string = chord[0].toUpperCase();
+    const fret = parseInt(chord.substring(1));
+
+    if (isNaN(fret) || fret <= 0 || fret > 20) {
+        alert("Syntaxe d'accord invalide. Utilisez des accords comme (e4), (a6), etc.");
+        return; // Arrêtez la fonction si la syntaxe de l'accord est invalide
+    }
+
+    // Éclairer les touches correspondantes à l'accord (barré)
+    for (let i = 0; i < 4; i++) {
+        const currentString = validStrings[(validStrings.indexOf(string) + i) % validStrings.length];
+        let offset;
+
+        // Choix de l'offset en fonction de la lettre entre les parenthèses
+        if (isEChord) {
+            offset = (currentString === 'D') ? -2 : (currentString === 'G') ? -5 : 0;
+        } else if (isAChord) {
+            // Ajoutez ici la logique spécifique pour 'a'
+            offset = (currentString === 'G') ? -2 : (currentString === 'B') ? -5 : 0;
+        }
+
+        const correspondingNote = guitarStrings[currentString][fret - 0 + i * 2 + offset];
+
+        toggleHighlightRectangle(correspondingNote);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -82,4 +195,3 @@ function turnOffAllRectangles() {
         rectangle.classList.remove('highlighted');
     });
 }
-
